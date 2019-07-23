@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.main-container {
+	color: #fff;
+	background-color: #5995DA;
+	padding: 20px 0;
+	display: flex;
+	justify-content: center;
+}
+
+.todo-container {
+	color: #5995DA;
+  	background-color: #D6E9FE;
+  	padding: 20px 0;
+  	display: flex;
+  	justify-content: center;
+
+  	margin-bottom: 10px;
+}
+
+.todo-grid-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.todo {
+	border: 1px solid grey;
+	height: 50px;
+	width: 300px;
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    margin-bottom: 10px;
+}
+
+.todo.completed div {
+	text-decoration: line-through;
+}
