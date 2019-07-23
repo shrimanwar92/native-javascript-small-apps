@@ -8,37 +8,36 @@ document.querySelector("#submit").addEventListener('click', function() {
 		return false;
 	}
 
-	let todo = document.createElement('x-todo');
-	todo.className = 'todo';
-	todo.setAttribute('completed', false);
-
-	// create div
-	let div = document.createElement('div');
-	div.textContent = val;
-	todo.appendChild(div);
-
-	// create delete button
-	let del = document.createElement('a');
-	del.textContent = 'Delete';
-	del.setAttribute('href', '#');
-	todo.appendChild(del);
-
-	todoGridContainer.appendChild(todo);
+	let el = document.createElement('x-todo');
+	el.todo = val;
+	el.classList = 'todo';
+	el.setAttribute('completed', false);
+	todoGridContainer.appendChild(el);
 	input.value = "";
 });
 
 class Todo extends HTMLElement {
-	static get observedAttributes() { return ["completed"]; }
+	//static get observedAttributes() { return ["completed"]; }
 
 	constructor() {
 		super();
-
 		this.addEventListener('click', this.handleClick);
+	}
+
+	set todo(todo) {
+		this.innerHTML = `
+			<div>
+				${todo}
+			</div>
+			<div class="delete-todo">
+				<a href="#">Delete</a>
+			</div>
+		`;
 	}
 
 	handleClick(e) {
 		if(e.target.text == 'Delete') {
-			e.target.parentNode.remove();
+			e.target.parentNode.parentNode.remove();
 			return false;
 		}
 		e.target.classList.add('completed');
