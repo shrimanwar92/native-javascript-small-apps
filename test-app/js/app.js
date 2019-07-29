@@ -1,35 +1,36 @@
 let tbody = document.querySelector("#tbody");
+let div = document.querySelector(".contents");
 
-class TdClass extends HTMLElement {
-	set myTd(td) {
-		this.innerHTML = td;
+class TableRow {
+	static addToUI(row) {
+		let tr = document.createElement('tr');
+
+		tr.innerHTML = `
+			<td>${row.id}</td>
+			<td>${row.name}</td>
+			<td><img src="${row.thumbnailUrl}"></td>
+			<td>${row.price}</td>
+		`;
+		tbody.appendChild(tr);
 	}
 
-	constructor() {
-		super();
+	static convertToList(itm) {
+		let ul = document.createElement('ul');
+
+		ul.innerHTML = `
+			<li><strong>ID: </strong>${itm.id}</li>
+			<li><strong>Name: </strong>${itm.name}</li>
+			<li><strong>Image: </strong><img src="${itm.thumbnailUrl}"></li>
+			<li><strong>Price: </strong>${itm.price}</li>
+		`;
+
+		div.appendChild(ul);
 	}
 }
-customElements.define("x-td", TdClass);
 
 let displayTable = (rowData) => {
 	rowData.forEach((row, index) => {
-		let r = document.createElement('tr');
-		
-		for(let key in row) {
-			let td = document.createElement("td");
-			let xtd = document.createElement("x-td");
-
-			if(key == "thumbnailUrl") {
-				let img = document.createElement("img");
-				img.src = row[key];
-				xtd.appendChild(img);
-			} else {
-				xtd.myTd = row[key];
-			}
-			td.appendChild(xtd);
-			r.appendChild(td);
-		}
-		tbody.appendChild(r);
+		TableRow.addToUI(row);
 	});
 };
 displayTable(TABLE_DATA);
@@ -66,34 +67,12 @@ document.querySelector("#stop").addEventListener("click", () => {
 	handle = undefined;
 });
 
-class List extends HTMLElement {
-	set item(itm) {
-		this.innerHTML = `
-			<ul>
-				<li><strong>ID: </strong>${itm.id}</li>
-				<li><strong>Name: </strong>${itm.name}</li>
-				<li><strong>Image: </strong><img src="${itm.thumbnailUrl}"></li>
-				<li><strong>Price: </strong>${itm.price}</li>
-			</ul>
-		`;
-	}
-
-	constructor() {
-		super();
-	}
-}
-
-customElements.define("x-list", List);
-
 // display list
 document.querySelector("#list").addEventListener("click", () => {
 	let table = document.querySelector("table");
 	table.innerHTML = "";
-	let div = document.querySelector(".contents");
 
 	TABLE_DATA.forEach(row => {
-		let l = document.createElement("x-list");
-		l.item = row;
-		div.appendChild(l);
+		TableRow.convertToList(row);
 	});
 });
