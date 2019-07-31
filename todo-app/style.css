@@ -25,21 +25,27 @@
 .todo-grid-container {
 	display: flex;
 	justify-content: center;
-	flex-direction: column;
-	align-items: center;
 }
 
-.todo {
-	border: 1px solid grey;
-	height: 50px;
-	width: 300px;
+.todo-grid-container-ul {
 	display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-    margin-bottom: 10px;
+	justify-content: center;
+	flex-direction: column;
+
+	/*border: 1px solid red;*/
+	width: 500px;
+	list-style-type: none;
 }
 
-.todo.completed div {
-	text-decoration: line-through;
+.todo-grid-container-ul li {
+	display: flex;
+	justify-content: space-around;
+	margin: 0.5em;
+	padding: 0.5em;
+	text-align: center;
+	border: 1px solid grey;
+}
+
+.selected {
+	text-decoration: line-through; 
 }

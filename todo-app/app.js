@@ -1,4 +1,27 @@
 let todoGridContainer = document.querySelector(".todo-grid-container");
+let ul = document.querySelector(".todo-grid-container-ul");
+
+class Todo {
+
+	constructor(todo) {
+		this.todo = todo;
+	}
+
+	addtoDom() {
+		let li = document.createElement('li');
+
+		li.innerHTML = `
+			<input type="checkbox" class="check">
+			<span>${this.todo}</span>
+			<a href="#" class="delete">Delete</a>
+		`;
+		ul.appendChild(li);
+	}
+}
+
+new Todo("asdadsa111").addtoDom();
+new Todo("asdadsa222").addtoDom();
+new Todo("asdadsa333").addtoDom();
 
 document.querySelector("#submit").addEventListener('click', function() {
 	let input = document.querySelector('#input-text-box');
@@ -8,45 +31,23 @@ document.querySelector("#submit").addEventListener('click', function() {
 		return false;
 	}
 
-	let el = document.createElement('x-todo');
-	el.todo = val;
-	el.classList = 'todo';
-	el.setAttribute('completed', false);
-	todoGridContainer.appendChild(el);
+	let todo = new Todo(val);
+	todo.addtoDom();
 	input.value = "";
 });
 
-class Todo extends HTMLElement {
-	//static get observedAttributes() { return ["completed"]; }
-
-	constructor() {
-		super();
-		this.addEventListener('click', this.handleClick);
+ul.addEventListener('click', function(e) {
+	if(e.target.textContent == "Delete") {
+		e.target.parentElement.remove();
 	}
 
-	set todo(todo) {
-		this.innerHTML = `
-			<div>
-				${todo}
-			</div>
-			<div class="delete-todo">
-				<a href="#">Delete</a>
-			</div>
-		`;
-	}
-
-	handleClick(e) {
-		if(e.target.text == 'Delete') {
-			e.target.parentNode.parentNode.remove();
-			return false;
+	if(e.target.type == "checkbox") {
+		if(e.target.checked) {
+			e.target.nextElementSibling.classList.add("selected");
+			e.target.disabled = true;
+		} else {
+			e.target.nextElementSibling.classList.remove("selected");
 		}
-		e.target.classList.add('completed');
-		e.target.setAttribute('completed', true);
-	}
+	} 
+});
 
-	attributeChangedCallback(name, oldValue, newValue) {
-    	console.log('Custom square element attributes changed.');
-  	}
-}
-
-customElements.define('x-todo', Todo);
