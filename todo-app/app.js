@@ -51,3 +51,38 @@ ul.addEventListener('click', function(e) {
 	} 
 });
 
+function filter(value) {
+	let li = ul.querySelectorAll('li');
+
+	li.forEach(node => {
+		
+		if(node.querySelector('span').textContent.indexOf(value) == -1) {
+			node.style.display = 'none';
+		} else {
+			node.style.display = 'flex';
+		}
+	});
+}
+
+function debounce(fn, delay) {
+	let timer = undefined;
+
+	return (...args) => {
+		if(timer) {
+			clearTimeout(timer);
+		}
+
+		timer = setTimeout(() => {
+			fn(...args);
+			timer = undefined;
+		}, delay);
+	};
+}
+
+var callDebounce = debounce(filter, 1000);
+
+document.querySelector(".search").addEventListener('keyup', () => {
+	let value = document.querySelector(".search-input").value;
+	callDebounce(value);
+});
+
