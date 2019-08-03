@@ -1,6 +1,6 @@
 # native-javascript-small-apps
 
-This repo contains my attempt to create small apps like todo, star rating system, etc. natively(only vanilla js, no frameworks) for deep learning.
+This repo contains my attempt to create small apps natively(only vanilla js, no frameworks) for deep learning.
 
 I have used various standard features
 
