@@ -3,7 +3,6 @@ let chipContainerUL = document.querySelector(".chip-container ul");
 let loadMore = document.querySelector(".load-more");
 let offset = 0;
 let limit = 12;
-let imageUrl = "https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/";
 
 class PokemonCard {
 	constructor(id, name, image, types) {
@@ -83,11 +82,9 @@ const fetchPokemon = async(offst = offset) => {
 		let pokemons = await resp.json();
 		pokemons.results.forEach(async(pokemon) => {
 			let pokemonId = pokemon.url.split("/")[pokemon.url.split("/").length - 2];
-			let item1 = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`);
-			let item = await item1.json();
-			console.log(item);
+			let item = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`);
+			item = await item.json();
 			let card = new PokemonCard(pokemonId, item.name, item.sprites.front_default, item.types);
-			// card.filterTypes(itemJson.types);
 			card.addToDom();
 		});
 		offset += pokemons.results.length;
