@@ -48,6 +48,7 @@
 		margin: 6.5px;
 		margin-bottom: 60px;
 		background-color: #F2F1F1;
+		cursor: pointer;
 
 		display: flex;
 		justify-content: center;
@@ -60,7 +61,7 @@
 	    justify-content: space-between;
 	    width: 216px;
 	    position: relative;
-	    top: 35px;
+	    top: 36px;
 	    text-align: center;
 	    height: 22px;
 	}

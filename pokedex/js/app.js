@@ -34,7 +34,7 @@ class PokemonCard {
 
 		return types.map(type => {	
 			let color = this.getTypeColor(type.type.name);		
-			console.log(color);
+			
 			switch(type.slot) {
 				case 1:
 					return `<span class="left" style="background-color:${color};">${type.type.name}</span>`;
@@ -84,6 +84,9 @@ const fetchPokemon = async(offst = offset) => {
 			let pokemonId = pokemon.url.split("/")[pokemon.url.split("/").length - 2];
 			let item = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`);
 			item = await item.json();
+			
+			pokemonsArr.push(item);
+
 			let card = new PokemonCard(pokemonId, item.name, item.sprites.front_default, item.types);
 			card.addToDom();
 		});

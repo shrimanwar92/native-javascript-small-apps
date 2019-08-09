@@ -1,3 +1,5 @@
+const pokemonsArr = [];
+
 const debounce = function(fn, delay) {
 	let timer = undefined;
 
