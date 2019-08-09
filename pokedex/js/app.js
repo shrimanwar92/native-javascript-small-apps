@@ -33,14 +33,17 @@ class PokemonCard {
 		});
 
 		return types.map(type => {	
-			let color = this.getTypeColor(type.type.name);		
-			
-			switch(type.slot) {
-				case 1:
-					return `<span class="left" style="background-color:${color};">${type.type.name}</span>`;
-				case 2:
-					return `<span class="right" style="background-color:${color};">${type.type.name}</span>`;
+			let color = this.getTypeColor(type.type.name);
+			let className = undefined;	
+
+			if(type.slot == 1) {
+				className = "left";
+			} else {
+				className = "right";
 			}
+
+			return `<span class="${className}" style="background-color:${color};">${type.type.name}</span>`;
+		
 		}).join("");
 	}
 
