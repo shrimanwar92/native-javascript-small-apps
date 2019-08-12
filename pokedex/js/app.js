@@ -114,3 +114,10 @@ search.addEventListener('keyup', () => {
 loadMore.addEventListener('click', () => {
 	fetchPokemon(offset);
 });
+
+chipContainerUL.addEventListener('click', (e) => {
+	alert('asdas');
+	let detail = new PokemonDetail();
+	detail.pokemon = pokemonsArr[1];
+	document.querySelector('.details').appendChild(detail);
+});
