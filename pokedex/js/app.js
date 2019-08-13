@@ -21,19 +21,20 @@ class PokemonCard {
 			<span class="pokemon-name">#00${this.id} ${this.name}</span>
 			<img height="125" width="125" src="${this.image}" />
 			<div class="types">
-				${this.filterTypes(this.types)}
+				${PokemonCard.filterTypes(this.types)}
 			</div>
+			<input type="hidden" value="${this.name}">
 		`;
 		chipContainerUL.appendChild(li);
 	}
 
-	filterTypes(types) {
+	static filterTypes(types) {
 		types.sort((a, b) => {
 			return a.slot - b.slot;
 		});
 
 		return types.map(type => {	
-			let color = this.getTypeColor(type.type.name);
+			let color = PokemonCard.getTypeColor(type.type.name);
 			let className = undefined;	
 
 			if(type.slot == 1) {
@@ -47,7 +48,7 @@ class PokemonCard {
 		}).join("");
 	}
 
-	getTypeColor(type) {
+	static getTypeColor(type) {
 		switch(type) {
 			case 'grass':
 			case 'bug':
@@ -116,8 +117,11 @@ loadMore.addEventListener('click', () => {
 });
 
 chipContainerUL.addEventListener('click', (e) => {
-	alert('asdas');
 	let detail = new PokemonDetail();
-	detail.pokemon = pokemonsArr[1];
+	detail.pokemon = e.target.parentNode.querySelector('input').getAttribute('value');
+
+	document.querySelector('.chip-container').remove();
+	document.querySelector('.load-more').remove();
+	document.querySelector('.heading').remove();
 	document.querySelector('.details').appendChild(detail);
 });
