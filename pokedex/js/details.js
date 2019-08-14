@@ -71,17 +71,19 @@ class PokemonDetail extends HTMLElement {
 				    <dt>Category</dt>
 				    <dd>${selectedPokemon.category || "-"}</dd>
 				    <dt>Abilities</dt>
-				    <dd>${this.getAbilities(selectedPokemon).join(",")}</dd>
+				    <dd>${this.getAbilities(selectedPokemon)}</dd>
 				</dl>
 			</div>
 
 			<div class="pokemon-details__base-stats">
 				<ul>
+					<li class="pokemon-details__base-stats--name">Base stats</li>
 					${selectedPokemon.stats.map(stat => `<li><span class="pokemon-details__base-stats--name">${stat.stat.name}</span><progress value="${stat.base_stat}" max="100"></progress></li>`).join("")}
 				</ul>
 			</div>
 
 			<div class="pokemon-details__moves">
+				<span class="pokemon-details__moves--heading">Moves</span>
 				<ul>
 					${this.getMoves(selectedPokemon)}
 				</ul>
@@ -110,7 +112,8 @@ class PokemonDetail extends HTMLElement {
 	}
 
 	getAbilities(selectedPokemon) {
-		return selectedPokemon.abilities.filter(ability => ability.is_hidden == false).map(ability => ability.ability.name);
+		return selectedPokemon.abilities.filter(ability => ability.is_hidden == false)
+				.map(ability => ability.ability.name).join(",");
 	}
 
 	addClickListeners() {

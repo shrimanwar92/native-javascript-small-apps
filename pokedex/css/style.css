@@ -287,6 +287,7 @@ dd {
 	margin-top: 32px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .pokemon-details__moves ul{
@@ -309,4 +310,12 @@ dd {
     font-weight: bold;
     text-transform: capitalize;
     font-size: 14px;
+}
+
+.pokemon-details__moves--heading {
+	font-weight: bold;
+    padding-bottom: 23px;
+    position: relative;
+    left: 41px;
+    font-size: 20px;
 }
