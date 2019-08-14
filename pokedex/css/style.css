@@ -31,14 +31,18 @@ body {
 
 .header-container {
 	display: flex;
-	justify-content: flex-start;
+	justify-content: center;
 	padding: 12px 0;
 	color: #fff;
 	background-color: rgb(37,31,50);}
 
+	.header-container span {
+		display: flex;
+		width: 1024px;
+    	justify-content: flex-start;
+	}
 	.header-container img {
-		position: relative;
-    	left: 80px;
+		cursor: pointer;
 	}
 
 .chip-container {
