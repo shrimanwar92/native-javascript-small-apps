@@ -1,6 +1,6 @@
 let chipContainerUL = document.querySelector(".chip-container ul");
 // let search = document.querySelector('.search');
-let loadMore = document.querySelector(".load-more");
+let loadMore = document.querySelector(".load-more button");
 let offset = 0;
 let limit = 12;
 
@@ -121,7 +121,5 @@ chipContainerUL.addEventListener('click', (e) => {
 	detail.pokemon = e.target.parentNode.querySelector('input').getAttribute('value');
 
 	document.querySelector('.chip-container').remove();
-	document.querySelector('.load-more').remove();
-	document.querySelector('.heading').remove();
 	document.querySelector('.details').appendChild(detail);
 });
