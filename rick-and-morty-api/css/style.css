@@ -24,15 +24,17 @@
 	color: #fff;
 	background-color: rgb(32, 35, 41);
 	flex-direction: column;
+	align-items: center;
 }
 
 .chip-container ul {
-	width: 1300px;
+	width: 1100px;
 	display: flex;
 	flex-wrap: wrap;
 	list-style-type: none;
 	margin: 0.5em;
 	padding: 0.5em;
+	justify-content: center;
 }
 
 .chip-container ul li{
@@ -50,12 +52,12 @@
     width: 100%;
     background: rgb(32, 35, 41);
     opacity: 0.8;
-    padding: 13px;
 }
 
 .character-name {
 	font-size: 22px;
     font-weight: 500;
+    text-align: center;
 }
 
 .character-image {
@@ -67,16 +69,17 @@
 .character-info {
 	display: flex;
 	flex-direction: column;
-	padding: 1.25rem;
 	width: 100%;
 	background: rgb(51, 51, 51);
 	border-radius: 0 0 0.625rem 0.625rem;
+	align-items: center;
 }
 
 .character-info .stats {
 	display: flex;
     justify-content: space-between;
     padding: 0.75rem 0px 0.375rem;
+    width: 90%;
 }
 
 .character-info label {
@@ -94,5 +97,24 @@
 }
 
 .pagination {
+	margin-bottom: 40px;
+	display: flex;
+    width: 20%;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.pagination a {
 	color: #fff;
+	text-decoration: none;
+}
+
+.pagination a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.episodes .show-episodes {
+	cursor: pointer;
+	text-decoration: underline;
 }
