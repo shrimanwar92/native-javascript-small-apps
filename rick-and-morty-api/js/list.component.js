@@ -40,8 +40,7 @@ class ListComponent {
 				}
 				return character;
 			});
-			
-			//console.log(results);
+		
 			this.render(results);
 		} catch(err) {
 			throw new Error(err);
@@ -118,9 +117,7 @@ class ListComponent {
 			`;
 
 			li.querySelector('.show-episodes').addEventListener('click', (e) => {
-				const characterId = e.target.getAttribute('id');
-				const character = items.filter(character => character.id == characterId)[0];
-				this.showEpisodes(character);
+				this.showEpisodes(item);
 			});
 			chipContainer.appendChild(li);
 		});
