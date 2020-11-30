@@ -1,0 +1,29 @@
+/*.tabs__button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
+.tabs__button {
+    width: 70px;
+    height: 40px;
+    border: none;
+    outline: none;
+}
+
+.tabs__content-container {
+    border: 1px solid red;
+    height: 200px;
+}
+
+.tabs__button.selected {
+    background-color: aqua;
+}
+
+.tabs__content {
+    display: none;
+}
+
+.show {
+    display: block;
+}
