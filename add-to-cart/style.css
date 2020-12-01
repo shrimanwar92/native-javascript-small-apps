@@ -1,0 +1,28 @@
+.products-container {
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    height: 40px;
+    width: 40px;
+    outline: none;
+}
+
+input {
+    height: 34px;
+    text-align: center;
+}
+
+.header-container {
+    height: 40px;
+    width: 40px;
+    background-color: aqua;
+    float: right;
+    text-align: center;
+    line-height: 40px;
+    font-size: 26px;
+}
