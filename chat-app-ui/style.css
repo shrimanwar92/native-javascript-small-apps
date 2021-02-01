@@ -55,7 +55,7 @@ body {
     margin: 10px;
     border-radius: 25px;
 }
-.chat-app__users li:hover {
+.chat-app__users li:hover, .chat-app__users li.active {
 	color: #ff6f69;
 	background-color: #ffeead; 
 }
